@@ -30,6 +30,7 @@ public class concatenationOfArray {
     }
 
     static int[] optimal_solution(int nums[]){
+        // optimal approach is to create a as array twice as nums array and use 1 loop to store the nums array twicce
 
         int n=nums.length;
         int ans[]=new int[2*n];
@@ -38,6 +39,8 @@ public class concatenationOfArray {
             ans[i+n]=nums[i];
         }
         return ans;
+
+        // Time Complexity:O(n)
 
     }
 }
