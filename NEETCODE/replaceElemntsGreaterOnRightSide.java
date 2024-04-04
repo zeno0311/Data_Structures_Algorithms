@@ -6,6 +6,7 @@ public class replaceElemntsGreaterOnRightSide {
     public static void main(String[] args) {
         int nums[]={17,18,5,4,6,1};
         System.out.println(Arrays.toString(brute_solution(nums)));
+        System.out.println(Arrays.toString(optimal_solution(nums)));
     }
 
 
@@ -29,5 +30,23 @@ public class replaceElemntsGreaterOnRightSide {
             }
         }
         return max;
+    }
+
+    static int[] optimal_solution(int nums[]){
+        // optimal approach is to compare first element with next amd store the largest among them in first. repeat these steps till the end of array
+
+        int n=nums.length;
+        int max=1;
+        for(int i=n-1;i>0;i--){
+            if(nums[i]>max){
+                max=nums[i];
+                nums[i-1]=Math.max(max,nums[i-1]);
+            }
+        }
+        
+        nums[n-1]=-1;
+        return nums;
+
+        //Time complexity:O(n)
     }
 }
