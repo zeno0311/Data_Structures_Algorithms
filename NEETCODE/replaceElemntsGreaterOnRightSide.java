@@ -33,18 +33,16 @@ public class replaceElemntsGreaterOnRightSide {
     }
 
     static int[] optimal_solution(int nums[]){
-        // optimal approach is to compare first element with next amd store the largest among them in first. repeat these steps till the end of array
 
+        // optimal approach is to iterate from backward of the array and store the greatest element
+        // trick to remember here is nums[0]=max(1:5), nums[1]=max(2:5), this can be written as nums[0]=max(nums[1],max(1))
         int n=nums.length;
-        int max=1;
-        for(int i=n-1;i>0;i--){
-            if(nums[i]>max){
-                max=nums[i];
-                nums[i-1]=Math.max(max,nums[i-1]);
-            }
+        int max=-1;
+        for(int i=n-1;i>=0;i--){
+            int newmax=Math.max(max,nums[i]);
+            nums[i]=max;
+            max=newmax;
         }
-        
-        nums[n-1]=-1;
         return nums;
 
         //Time complexity:O(n)
