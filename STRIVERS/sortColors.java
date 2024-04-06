@@ -58,8 +58,32 @@ public class sortColors {
     static int [] optimal_solution(int nums[]){
 
         // use dutch national flag algorithm
+        // BreakDown of Dutch National Flag Algorithm
+        // 3 pointers--> low,mid =0; high=n-1; iterate till mid<=high; if nums[mid]==0 swap low and mid increment them, if mid==1 just increment mid, else swap high and mid decrement high
+        int n=nums.length;
+        int low=0,mid =0;
+        int high=n-1;
+        while(mid<=high){
+            if(nums[mid]==0){
+                swap(nums,low,mid);
+                low++;
+                mid++;
+            }else if(nums[mid]==1){
+                mid++;
+            }else{
+                swap(nums,mid,high);
+                high--;
+            }
+        }
+        return nums;
 
         // time complexity:O(n)
 
+    }
+
+    static void swap(int nums[],int x,int y){
+        int temp=nums[x];
+        nums[x]=nums[y];
+        nums[y]=temp;
     }
 }
